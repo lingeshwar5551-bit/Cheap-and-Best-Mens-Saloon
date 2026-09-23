@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --neon-lime: #d4ff32;
+    --neon-glow: rgba(212, 255, 50, 0.45);
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #07090b;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #090a0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e242d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4ff32;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(18, 22, 28, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-neon {
+  background: rgba(18, 22, 28, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 255, 50, 0.25);
+  box-shadow: 0 0 25px rgba(212, 255, 50, 0.08);
+}
+
+.neon-text-glow {
+  text-shadow: 0 0 20px rgba(212, 255, 50, 0.5), 0 0 40px rgba(212, 255, 50, 0.2);
+}
+
+.neon-box-glow {
+  box-shadow: 0 0 30px rgba(212, 255, 50, 0.15), inset 0 0 15px rgba(212, 255, 50, 0.05);
+}
+
+/* Grid background */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Subtle Film Grain */
+.bg-noise {
+  background-image: radial-gradient(rgba(212, 255, 50, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}
+
+/* Trimmer Buzz Animation */
+@keyframes trimmer-vibrate {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-1.5px, 1.5px) rotate(-1deg); }
+  50% { transform: translate(1.5px, -1px) rotate(1deg); }
+  75% { transform: translate(-1px, -1.5px) rotate(-0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.animate-buzz {
+  animation: trimmer-vibrate 0.08s infinite ease-in-out;
+}

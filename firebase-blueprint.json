@@ -1,0 +1,102 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "name", "email"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Customer salon appointment reservation",
+      "type": "object",
+      "properties": {
+        "bookingId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "service": { "type": "string" },
+        "stylist": { "type": "string" },
+        "date": { "type": "string" },
+        "timeSlot": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "service", "date", "timeSlot", "status"]
+    },
+    "GameScore": {
+      "title": "GameScore",
+      "description": "Barber Game simulator score record",
+      "type": "object",
+      "properties": {
+        "scoreId": { "type": "string" },
+        "userId": { "type": "string" },
+        "score": { "type": "number" },
+        "haircutQuality": { "type": "string" },
+        "selectedTools": { "type": "array" },
+        "completionPercentage": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["userId", "score", "haircutQuality", "completionPercentage", "timestamp"]
+    },
+    "Feedback": {
+      "title": "Feedback",
+      "description": "Customer feedback and review",
+      "type": "object",
+      "properties": {
+        "feedbackId": { "type": "string" },
+        "userId": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "category": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["userId", "rating", "comment", "timestamp"]
+    },
+    "Favorite": {
+      "title": "Favorite",
+      "description": "Saved favorite salon service",
+      "type": "object",
+      "properties": {
+        "favoriteId": { "type": "string" },
+        "userId": { "type": "string" },
+        "serviceId": { "type": "string" },
+        "serviceTitle": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["userId", "serviceId", "serviceTitle", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Customer account profiles"
+    },
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Customer booking records"
+    },
+    "/gameScores/{scoreId}": {
+      "schema": "GameScore",
+      "description": "Barber simulator high score submissions"
+    },
+    "/feedback/{feedbackId}": {
+      "schema": "Feedback",
+      "description": "Customer service feedback"
+    },
+    "/favorites/{favoriteId}": {
+      "schema": "Favorite",
+      "description": "Saved favorite services"
+    }
+  }
+}
